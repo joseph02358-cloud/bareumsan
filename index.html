@@ -13,7 +13,7 @@
   <title>Bareumsan - Hangeul 7 Hari</title>
   
   <!-- PWA Manifest (data URL, dibaca sebagai manifest.json) -->
-  <link rel="manifest" href='data:application/manifest+json,{"name":"Bareumsan - Hangeul 7 Hari","short_name":"Bareumsan","description":"Belajar Hangeul 7 Hari","start_url":"./","scope":"./","display":"standalone","orientation":"portrait","background_color":"%23C60E2E","theme_color":"%23C60E2E","lang":"id","icons":[{"src":"data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27%3E%3Crect width=%27512%27 height=%27512%27 fill=%27%23C60E2E%27 rx=%27100%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%27300%27 text-anchor=%27middle%27 dominant-baseline=%27central%27 fill=%27white%27 font-family=%27sans-serif%27 font-weight=%27bold%27%3E한%3C/text%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"},{"src":"data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27%3E%3Crect width=%27192%27 height=%27192%27 fill=%27%23C60E2E%27 rx=%2740%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%27120%27 text-anchor=%27middle%27 dominant-baseline=%27central%27 fill=%27white%27 font-family=%27sans-serif%27 font-weight=%27bold%27%3E한%3C/text%3E%3C/svg%3E","sizes":"192x192","type":"image/svg+xml","purpose":"any maskable"}]}' />
+  <link rel="manifest" href='<link rel="manifest" href="./manifest.json" />
   
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23C60E2E' rx='100'/%3E%3Ctext x='50%25' y='50%25' font-size='300' text-anchor='middle' dominant-baseline='central' fill='white' font-family='sans-serif' font-weight='bold'%3E한%3C/text%3E%3C/svg%3E" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23C60E2E' rx='100'/%3E%3Ctext x='50%25' y='50%25' font-size='300' text-anchor='middle' dominant-baseline='central' fill='white' font-family='sans-serif' font-weight='bold'%3E한%3C/text%3E%3C/svg%3E" />
@@ -667,5 +667,14 @@
     renderHome();
     updateProgressDisplay();
   </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.log('SW error:', err));
+    });
+  }
+</script>
 </body>
 </html>
